@@ -1,0 +1,18 @@
+spring:
+  application:
+    name:
+      TPO10
+  h2:
+    console:
+      path: /console
+  datasource:
+    url: jdbc:h2:file:./data/links
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  messages:
+    basename: messages
+  cache:
+    type: none

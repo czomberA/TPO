@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Link</title>
+    <style>
+        label{
+            display: block;
+            }
+        .error{
+            color: red;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+<h1>Add new link</h1>
+<form action="#" method="get" th:action="@{/changeLocale}">
+
+    <select name="locale" onchange="this.form.submit()" >
+        <option value="en">Choose a language</option>
+        <option value="en">English</option>
+        <option value="pl">Polish</option>
+        <option value="de">German</option>
+    </select>
+</form>
+<form action="#" method="post" th:action="@{/save}" th:object="${Link}">
+    <label>
+        Name:
+        <input type="text" th:field="*{name}">
+    </label>
+    <p th:errors="*{name}" class="error">Invalid first name length (min. 2 characters)!</p>
+    <label>
+        target url:
+        <input type="text" th:field="*{targetUrl}">
+    </label>
+    <p th:errors="*{targetUrl}" class="error">Invalid last name length (min. 2 characters)!</p>
+    <label>
+        password:
+        <input type="text" th:field="*{password}">
+    </label>
+    <p th:errors="*{password}" class="error">Invalid emain address!</p>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

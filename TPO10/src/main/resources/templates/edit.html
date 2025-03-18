@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Link</title>
+</head>
+<body>
+<h1>Edit Link</h1>
+<form action="#" method="post" th:action="@{/saveEdited}" th:object="${Link}">
+    <input type="hidden" name="id" th:value="${Link.id}">
+    <input type="hidden" name="password" th:value="${password}">
+    <label>
+        Name:
+        <input type="text" th:field="*{name}" placeholder="Enter a new name">
+    </label>
+    <p th:errors="*{name}" class="error">Invalid name</p>
+
+    <label>
+        Target URL:
+        <input type="text" th:field="*{targetUrl}" placeholder="Enter a new target URL">
+    </label>
+    <p th:errors="*{targetUrl}" class="error">Invalid URL</p>
+
+
+
+    <button type="submit">Save Changes</button>
+</form>
+</body>
+</html>

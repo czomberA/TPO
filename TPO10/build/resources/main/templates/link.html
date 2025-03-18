@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Link</title>
+</head>
+<body>
+<div th:if="${link}">
+    <h1>Link</h1>
+    <p th:text="|ID: ${link.getId()}|" th:name="id"></p>
+    <p th:text="|Name: ${link.getName()}|"></p>
+    <p th:text="|Target URL: ${link.getTargetUrl()}|"></p>
+    <p th:text="|Redirect URL: ${link.getRedirectUrl()}|"></p>
+    <p th:text="|Visits: ${link.getVisits()}|"></p>
+    <form method="post" th:action="@{/delete}">
+        <label>
+            <input type="hidden" name="id" th:value="${link.id}">
+            Password:
+            <input type="password" name="password" placeholder="Enter your password" required>
+        </label>
+        <button type="submit">Delete</button>
+    </form>
+
+    <!-- Edit form -->
+    <form method="get" th:action="@{/edit}">
+        <label>
+            <input type="hidden" name="id" th:value="${link.id}">
+            Password:
+            <input type="password" name="password" placeholder="Enter your password" required>
+        </label>
+        <button type="submit">Edit</button>
+    </form>
+</div>
+
+</div>
+
+<h1 th:unless="${link}">Missing code with this name</h1>
+</body>
+</html>
