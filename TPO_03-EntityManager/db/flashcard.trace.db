@@ -1,0 +1,5 @@
+2024-10-17 15:20:58.917648+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "select * from entry\000d\000adrop [*]table entry"
+Syntax error in SQL statement "select * from entry\000d\000adrop [*]table entry"; SQL statement:
+select * from entry
+drop table entry [42000-224]
