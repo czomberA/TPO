@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{title}">Random data</title>
+</head>
+<body>
+<h1 th:text="#{title}">Random data generator</h1>
+<form action="randomData" method="post">
+    <label>
+        <span th:text="#{no_of_entries}"></span>
+        <input type="number" name="value">
+    </label>
+    <fieldset>
+        <legend th:text="#{additional_fields}">Additional fields:</legend>
+
+        <div>
+            <input type="checkbox" id="country" name="country"  />
+            <label for="country" th:text="#{country}">Country</label>
+        </div>
+        <div>
+            <input type="checkbox" id="occupation" name="occupation" />
+            <label for="occupation" th:text="#{occupation}">Occupation</label>
+        </div>
+        <div>
+            <input type="checkbox" id="address" name="address" />
+            <label for="address" th:text="#{address}">address</label>
+        </div>
+        <div>
+            <input type="checkbox" id="industry" name="industry" />
+            <label for="industry" th:text="#{industry}">industry</label>
+        </div>
+        <div>
+            <input type="checkbox" id="phoneNumber" name="phoneNumber" />
+            <label for="phoneNumber" th:text="#{phone_number}">phoneNumber</label>
+        </div>
+        <div>
+            <input type="checkbox" id="email" name="email" />
+            <label for="email" th:text="#{email}">email</label>
+        </div>
+        <div>
+            <input type="checkbox" id="sport" name="sport" />
+            <label for="sport" th:text="#{sport}">sport</label>
+        </div>
+        <div>
+            <input type="checkbox" id="university" name="university" />
+            <label for="university" th:text="#{university}">university</label>
+        </div>
+
+    </fieldset>
+
+    <label th:text="#{choose_language}"></label>
+        <select name="language">
+            <option value="en">English</option>
+            <option value="pl">Polish</option>
+            <option value="de">German</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+
+            <option value="it">Italian</option>
+            <option value="nl">Dutch</option>
+            <option value="hu">Hungarian</option>
+            <option value="pt">Portuguese</option>
+            <option value="bg">Bulgarian</option>
+        </select>
+
+    <button type="submit" th:text="#{generate_button}">Generate</button>
+</form>
+<div th:if="${error_type != null}" th:text="${error_type}"></div>
+<div th:if="${!#lists.isEmpty(people)}">
+<table border="1">
+    <tr>
+        <th th:text="#{name}">Name</th>
+        <th th:text="#{surname}">Surname</th>
+        <th th:text="#{birthday}">Birthday</th>
+        <th th:if="${people[0]?.getCountry() != null}" th:text="#{country}">Country of origin</th>
+        <th th:if="${people[0]?.getOccupation() != null}" th:text="#{occupation}">Occupation</th>
+        <th th:if="${people[0]?.getAddress() != null}" th:text="#{address}">Address</th>
+        <th th:if="${people[0]?.getEmail() != null}" th:text="#{email}">Email</th>
+        <th th:if="${people[0]?.getIndustry() != null}" th:text="#{industry}">Industry</th>
+        <th th:if="${people[0]?.getPhoneNumber() != null}" th:text="#{phone_number}">Phone number</th>
+        <th th:if="${people[0]?.getSport() != null}" th:text="#{sport}">Favorite sport</th>
+        <th th:if="${people[0]?.getUniversity() != null}" th:text="#{university}">University</th>
+    </tr>
+    <tr th:each="person : ${people}">
+        <td th:text="${person.getName()}"></td>
+        <td th:text="${person.getSurname()}"></td>
+        <td th:text="${person.getBirthDate()}"></td>
+        <td th:if="${person.getCountry() != null}" th:text="${person.getCountry()}"></td>
+        <td th:if="${person.getOccupation() != null}" th:text="${person.getOccupation()}"></td>
+        <td th:if="${person.getAddress() != null}" th:text="${person.getAddress()}"></td>
+        <td th:if="${person.getEmail() != null}" th:text="${person.getEmail()}"></td>
+        <td th:if="${person.getIndustry() != null}" th:text="${person.getIndustry()}"></td>
+        <td th:if="${person.getPhoneNumber() != null}" th:text="${person.getPhoneNumber()}"></td>
+        <td th:if="${person.getSport() != null}" th:text="${person.getSport()}"></td>
+        <td th:if="${person.getUniversity() != null}" th:text="${person.getUniversity()}"></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
